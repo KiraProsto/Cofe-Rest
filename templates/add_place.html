@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block main %}
+<main class="main_add">
+  <form
+    action="/add_place"
+    method="POST"
+    enctype="multipart/form-data"
+    class="form_add">
+    <h1 class="form_title">Добавить ваше место:</h1>
+    <label class="file_upload">
+      <span class="file_text">Загрузить фото</span>
+      <input type="file" name="photo" accept="image/*" required />
+    </label>
+    <img id="preview" class="preview_img" alt="Превью фото" />
+    <input type="text" placeholder="Название" name="title" required />
+    <input type="text" placeholder="Адрес" name="address" required />
+    <input
+      type="number"
+      placeholder="Рейтинг"
+      name="rating"
+      min="0"
+      max="10"
+      step="0.1"
+      required />
+    <button class="btn_add">Добавить место</button>
+  </form>
+</main>
+
+<script>
+  const fileInput = document.querySelector('input[name="photo"]');
+  const preview = document.getElementById('preview');
+
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (file) {
+      preview.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
+    }
+  });
+</script>
+
+{% endblock %}

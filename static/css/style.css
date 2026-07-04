@@ -1,0 +1,314 @@
+/* ===========================================
+СТИЛИ
+===========================================*/
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: 0;
+  font-family: sans-serif;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: #77452b;
+}
+
+body {
+  background: url(../img/background.png) 0 0 / cover no-repeat;
+  color: black;
+}
+
+/* ===========================================
+HEADER
+===========================================*/
+header {
+  padding: 10px 30px 10px 20px;
+  background-color: #dcaa82;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo__img {
+  width: 50px;
+  height: 50px;
+}
+
+.title {
+  font-size: 22px;
+}
+
+.header__form {
+  display: flex;
+  gap: 0;
+}
+
+.header__form > input {
+  padding: 10px;
+  min-width: 300px;
+  border: #77452b 1px solid;
+}
+
+.header__form > button {
+  background: #77452b;
+  color: #fff;
+  border: none;
+  padding: 10px;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+}
+
+/* ===========================================
+MAIN
+===========================================*/
+
+/* index */
+.main_index {
+  height: 90vh;
+  display: flex;
+}
+
+.main__left {
+  width: 43%;
+  background-color: #f8eadf;
+  height: 100%;
+}
+
+.tabs {
+  display: flex;
+  gap: 15px;
+  margin: 10px auto;
+  justify-content: center;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.tab.active {
+  background: #77452b;
+  color: white;
+}
+
+.cards {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.card {
+  border: #323232 solid 1px;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.card__img {
+  width: 200px;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+.card__desc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.card__title {
+  font-family: sans-serif;
+}
+
+.card__address {
+  font-size: 12px;
+}
+
+.card__rating {
+  font-size: 14px;
+}
+
+.card__btn {
+  margin-top: auto;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.2s;
+  background: #91593b;
+  color: #fff;
+  width: 100%;
+}
+
+.card__btn:hover {
+  background: #77452b;
+  color: #fff;
+}
+
+.main__right {
+  padding: 10px;
+  width: 55%;
+  background-color: #f8eadf;
+  margin: 0 0 0 auto;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* add_place */
+.main_add {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_add {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 2rem;
+  max-width: 400px;
+  border: 2px solid whitesmoke;
+  border-radius: 1rem;
+  > * {
+    padding: 0.5rem 1rem;
+  }
+  background: rgba(255, 255, 255, 0.2);
+  /* background: rgba(0, 0, 0, 0.2); */
+  backdrop-filter: blur(10px);
+}
+
+.form_add > input {
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+}
+
+.file_upload {
+  display: inline-block;
+  background: #77452b;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.file_upload:hover {
+  background: #91593b;
+}
+
+.file_upload input[type='file'] {
+  display: none;
+}
+
+.preview_img {
+  margin: 0 auto;
+  width: 200px;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: none;
+}
+
+.form_title {
+  color: #323232;
+}
+
+.btn_add {
+  margin-top: 15px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn_add:hover {
+  background: ivory;
+}
+
+/* favorite.html */
+.main_favorite {
+  min-height: 100vh;
+}
+
+/* ===========================================
+FOOTER
+===========================================*/
+footer {
+  padding: 10px 30px 10px 20px;
+  background-color: #dcaa82;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.logo__img-footer {
+  width: 50px;
+  height: 50px;
+}
+
+.title-footer {
+  font-size: 24px;
+}
+
+hr {
+  width: 185px;
+  border: black 0.5px solid;
+}
+
+.footer__desc {
+  margin: 5px 12px;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+.footer__right {
+  margin-right: 80px;
+  display: flex;
+  justify-content: space-between;
+  gap: 200px;
+}
+
+.column-1,
+.column-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-size: 14px;
+  gap: 10px;
+}

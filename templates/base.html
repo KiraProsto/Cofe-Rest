@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css')}}" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <title>Cafe & Rest</title>
+  </head>
+  <body>
+    <header>
+      <div class="header__left">
+        <a href="/" class="logo">
+          <img
+            src="../static/img/logo.png"
+            alt="Логотип сайта"
+            class="logo__img" />
+          <h1 class="title">Cafe & Rest</h1>
+        </a>
+        <form action="/" method="GET" class="header__form">
+          <input type="text" name="city" placeholder="Введите город" />
+          <button>Найти</button>
+        </form>
+      </div>
+      <nav>
+        <a href="/">Заведения</a>
+        <a href="/add_place">Добавить место</a>
+      </nav>
+    </header>
+    {% block main %} {% endblock %}
+    <footer>
+      <div class="footer__left">
+        <div class="footer__logo">
+          <img
+            src="../static/img/logo.png"
+            alt="Логотип сайта"
+            class="logo__img-footer" />
+          <h1 class="title-footer">Cafe & Rest</h1>
+        </div>
+        <hr />
+        <p class="footer__desc">Найди место с душой</p>
+      </div>
+      <div class="footer__right">
+        <nav class="column-1">
+          <a href="/">Главная</a>
+          <a href="/?mode=favorite">Понравившиеся</a>
+          <a href="/add_place">Добавить место</a>
+        </nav>
+        <nav class="column-2">
+          <a href="">О проекте</a>
+          <a href="">Контакты</a>
+          <a href="">Политика конфиденциальности</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

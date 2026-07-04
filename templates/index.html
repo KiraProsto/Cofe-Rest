@@ -1,0 +1,107 @@
+{% extends "base.html" %} {% block main %}
+<main class="main_index">
+  <div class="main__left">
+    <div class="cards">
+      <div class="tabs">
+        <a href="/?mode=all" class="tab {% if mode=='all' %}active{% endif %}"
+          >Все места</a
+        >
+        <a href="/?mode=mine" class="tab {% if mode=='mine' %}active{% endif %}"
+          >Мои места</a
+        >
+        <a
+          href="/?mode=favorite"
+          class="tab {% if mode=='favorite' %}active{% endif %}"
+          >Избранное</a
+        >
+      </div>
+      {% for card in places %}
+      <div class="card">
+        <img src="{{card.photo}}" alt="{{card.title}}" class="card__img" />
+        <div class="card__desc">
+          <h2 class="card__title">{{card.title}}</h2>
+          <p class="card__address">{{card.address}}</p>
+          <p class="card__rating">Рейтинг: {{card.rating}} ⭐️</p>
+          <button class="card__btn" data-id="{{card.id}}">
+            {% if card.is_favorite %} Удалить из избранного {% else %} В
+            избранное{% endif %}
+          </button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="main__right">
+    <div id="map"></div>
+  </div>
+</main>
+
+<script>
+  const places = JSON.parse(`{{ places | tojson | safe }}`);
+  const map = L.map('map');
+  const cafeIcon = L.icon({
+    iconUrl: '/static/img/marker.svg',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+  }).addTo(map);
+
+  let markers = [];
+
+  function renderMarkers(places) {
+    markers.forEach((m) => map.removeLayer(m));
+    markers = [];
+
+    let bounds = [];
+
+    places.forEach((place) => {
+      if (place.lat && place.lon) {
+        const marker = L.marker([place.lat, place.lon], {
+          icon: cafeIcon,
+        }).addTo(map).bindPopup(`
+            <b>${place.title}</b><br>
+            ${place.address}<br>
+            Рейтинг: ${place.rating} ⭐️
+          `);
+
+        markers.push(marker);
+        bounds.push([place.lat, place.lon]);
+      }
+    });
+
+    if (bounds.length > 0) {
+      map.fitBounds(bounds);
+    } else {
+      map.setView([55.751244, 37.618423], 5);
+    }
+  }
+
+  renderMarkers(places);
+</script>
+
+<script>
+  document.querySelectorAll('.card__btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      if (btn.disabled) return;
+      btn.disabled = true;
+
+      const id = btn.dataset.id;
+      try {
+        const res = await fetch(`/favorite/${id}`, { method: 'POST' });
+        const data = await res.json();
+
+        btn.textContent = data.is_favorite
+          ? 'Удалить из избранного'
+          : 'В избранное';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+</script>
+
+{% endblock %}
