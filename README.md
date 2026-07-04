@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=160&color=custom_gradient=0:8D6748,10:B5835A,100:D9A567&text=Cafe Rest&fontAlignY=40&fontColor=FFFFFF" alt="Cafe & Rest Capsule"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=160&color=custom_gradient=0:8D6748,10:B5835A,100:D9A567&text=Cafe_Rest&fontAlignY=40&fontColor=FFFFFF" alt="Cafe & Rest Capsule"/>
 </p>
 
 <p align="center">
